@@ -61,7 +61,7 @@ class _CalculatorState extends State<Calculator> {
             SizedBox(height: 5),
             Container(
               width: 360,
-              height: 100,
+              height: 80,
               padding: EdgeInsets.fromLTRB(5, 2, 5, 3),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +93,7 @@ class _CalculatorState extends State<Calculator> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 1),
             Container(
               width: 360,
               padding: EdgeInsets.fromLTRB(5, 2, 5, 3),
@@ -297,7 +297,7 @@ class _CalculatorState extends State<Calculator> {
                 children: [
                   ElevatedButton(
                     onPressed: _handleSubmit,
-                    child: Text("Submit", style: TextStyle(fontSize: 20)),
+                    child: Text("Calculate", style: TextStyle(fontSize: 20)),
                   ),
                   SizedBox(width: 10),
                   ElevatedButton(
@@ -347,9 +347,12 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _handleSubmit() {
+    //jumlah grade point * credit
     double totalPoints = 0;
+    //jumlah semua credit hours
     double totalCredits = 0;
 
+    //letak semua controller marks dengan credits dalam List => senang untuk buat loop
     List<TextEditingController> marks = [
       mark1Controller,
       mark2Controller,
@@ -364,16 +367,21 @@ class _CalculatorState extends State<Calculator> {
       credits4Controller,
     ];
 
+    //kita loop setiap subject => nak elak daripada hardcode(code yang berulang)
     for (int i = 0; i < marks.length; i++) {
+      //kita ambil nilai yang user input
       double mark = double.tryParse(marks[i].text) ?? 0;
       double credit = double.tryParse(credits[i].text) ?? 0;
 
+      //dekat sini kita ambil function yang mana function convert marks kepada GPA point
       double gradePoint = _getGradePoint(mark);
 
+      //sini baru kita guna formula GPA
       totalPoints += gradePoint * credit;
       totalCredits += credit;
     }
 
+    //kita kena update UI untuk dapatkan nilai terbaru
     setState(() {
       if (totalCredits > 0) {
         gpa = totalPoints / totalCredits;

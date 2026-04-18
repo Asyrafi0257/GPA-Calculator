@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpa_calculator/calculator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,10 +10,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  void iniState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +53,7 @@ class _HomeState extends State<Home> {
                         onPressed: () {},
                         child: Text(
                           "Dashboard",
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: GoogleFonts.playwriteAr(fontSize: 24),
                         ),
                       ),
                     ),
@@ -100,10 +94,7 @@ class _HomeState extends State<Home> {
                         onPressed: _handleCalculator,
                         child: Text(
                           "Calculator",
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: GoogleFonts.playwriteAr(fontSize: 24),
                         ),
                       ),
                     ),
