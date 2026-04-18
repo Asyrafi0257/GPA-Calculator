@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gpa_calculator/calculator.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -96,7 +97,7 @@ class _HomeState extends State<Home> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: _handleCalculator,
                         child: Text(
                           "Calculator",
                           style: TextStyle(
@@ -113,6 +114,13 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+    );
+  }
+
+  void _handleCalculator() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Calculator()),
     );
   }
 }
