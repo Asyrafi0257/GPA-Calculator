@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
             SizedBox(height: 50),
             Container(
               width: 360,
-              height: 270,
+              height: 280,
               //decoration tu untuk kita nak style kan container
               decoration: BoxDecoration(
                 color: Colors.grey[300],
